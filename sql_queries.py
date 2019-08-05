@@ -2,7 +2,7 @@
 drop_jerked_truck_events_table = "DROP TABLE IF EXISTS jerked_truck_events"
 create_jerked_truck_events_table = """
     CREATE TABLE IF NOT EXISTS jerked_truck_events (
-        date_timestamp BIGINT NOT NULL,
+        date_timestamp TIMESTAMP NOT NULL,
         event_type VARCHAR(255) NOT NULL,
         label VARCHAR(50) NOT NULL,
         accel_x DECIMAL(20, 17),
