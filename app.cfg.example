@@ -1,0 +1,6 @@
+[TIMESCALEDB]
+HOST=127.0.0.1
+DB_NAME=truckdata
+DB_USER=postgres
+DB_PASSWORD=postgres
+DB_PORT=5432
