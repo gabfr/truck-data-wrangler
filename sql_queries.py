@@ -1,9 +1,8 @@
 
-drop_jerked_truck_events_table = "DROP DATABASE IF EXISTS truckdata"
+drop_jerked_truck_events_table = "DROP TABLE IF EXISTS jerked_truck_events"
 create_jerked_truck_events_table = """
     CREATE TABLE IF NOT EXISTS jerked_truck_events (
-        timestamp TIMESTAMP PRIMARY KEY,
-        date_timestamp DATETIME,
+        date_timestamp TIMESTAMP PRIMARY KEY,
         event_type VARCHAR(255) NOT NULL,
         label VARCHAR(50) NOT NULL,
         accel_x DECIMAL(15, 6),
@@ -24,3 +23,4 @@ create_jerked_truck_events_table = """
         is_breaking INTEGER
     )
 """
+
