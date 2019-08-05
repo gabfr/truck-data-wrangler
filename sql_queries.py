@@ -21,6 +21,8 @@ create_jerked_truck_events_table = """
         jerk_z DECIMAL(20, 17),
         is_accelerating INTEGER,
         is_breaking INTEGER,
+        is_turning_left INTEGER,
+        is_turning_right INTEGER,
         PRIMARY KEY (date_timestamp, event_type, label)
     )
 """
