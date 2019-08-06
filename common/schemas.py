@@ -1,6 +1,7 @@
 from pyspark.sql.types import *
 
 csvSchema = StructType([
+    StructField("", LongType(), True),
     StructField("timestamp", LongType(), False),
     StructField("accel_x", DoubleType(), False),
     StructField("accel_y", DoubleType(), False),
