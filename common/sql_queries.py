@@ -4,7 +4,7 @@ drop_jerked_truck_events_table = "DROP TABLE IF EXISTS jerked_truck_events"
 create_jerked_truck_events_table = """
     CREATE TABLE IF NOT EXISTS jerked_truck_events (
         date_timestamp TIMESTAMP NOT NULL,
-        -- event_type VARCHAR(255) NOT NULL,
+        event_type VARCHAR(255) NOT NULL,
         label VARCHAR(50) NOT NULL,
         accel_x DECIMAL(40, 20),
         accel_y DECIMAL(40, 20),
@@ -24,8 +24,7 @@ create_jerked_truck_events_table = """
         is_breaking INTEGER,
         is_turning_left INTEGER,
         is_turning_right INTEGER,
-        -- PRIMARY KEY (date_timestamp, event_type, label)
-        PRIMARY KEY (date_timestamp, label)
+        PRIMARY KEY (date_timestamp, event_type, label)
     )
 """
 
