@@ -17,7 +17,9 @@ def classify_accelerometer_data(configs):
 
         df = df.withColumn("timestamp", F.unix_timestamp(col("date_timestamp")))
 
-        win_spec = Window.partitionBy(col("label")).orderBy("timestamp")
+        column_list = ["event_type", "label"]
+
+        win_spec = Window.partitionBy([col(x) for x in column_list]).orderBy("timestamp")
 
         columns_that_needs_latest_values = ['accel_x', 'accel_y', 'accel_z']
 
@@ -94,6 +96,7 @@ def classify_accelerometer_data(configs):
 
         df = df[[
             'date_timestamp',
+            'event_type',
             'label',
             'accel_x',
             'accel_y',
