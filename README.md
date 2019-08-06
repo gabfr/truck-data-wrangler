@@ -88,7 +88,7 @@ Primary keys: `date_timestamp`, `label`
 
 We could do the same with other infinity of tools. So, below I will describe why we choosed these techs:
 
- - TimescaleDB
+ - TimescaleDB (PostgreSQL fine tuned for "real-time" applications with high-frequency INSERT statements)
  - Apache Spark (with Structured Streaming)
 
 Assuming we have several trucks to monitor on, it would be very practical, secure and easy to just upload a csv with the sensors values of each truck inside a folder (on S3 or HDFS), and automatically this file would be parsed by our Structured Streaming ETL and get inserted right into the TimescaleDB.
