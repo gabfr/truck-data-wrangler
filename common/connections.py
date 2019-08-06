@@ -1,6 +1,6 @@
 import psycopg2
-from pyspark.sql import SparkSession
 from common.config import parse_config
+from pyspark.sql import SparkSession
 
 
 def create_timescaledb_connection(autocommit=True):
