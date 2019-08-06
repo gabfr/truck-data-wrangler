@@ -37,6 +37,12 @@ def create_streaming_window(raw_df, configs):
             .withColumnRenamed('avg(gyro_roll)', 'gyro_roll')
             .withColumnRenamed('avg(gyro_pitch)', 'gyro_pitch')
             .withColumnRenamed('avg(gyro_yaw)', 'gyro_yaw')
+            .withColumn('accel_x', col("accel_x").cast("double"))
+            .withColumn('accel_y', col("accel_y").cast("double"))
+            .withColumn('accel_z', col("accel_z").cast("double"))
+            .withColumn('gyro_roll', col("gyro_roll").cast("double"))
+            .withColumn('gyro_pitch', col("gyro_pitch").cast("double"))
+            .withColumn('gyro_yaw', col("gyro_yaw").cast("double"))
     )
 
     return windowedStreaming \
