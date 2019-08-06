@@ -4,7 +4,7 @@ from pyspark.sql.types import StringType
 
 def _get_underscore_prefix(s):
     if '://' in s:
-        s = s.split('/')[x-1]
+        s = s.split('/')[-1]
     return "_".join(s.split("_")[:-1])
 
 
