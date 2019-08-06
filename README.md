@@ -60,12 +60,13 @@ This file was pre processed and saved with the same columns of the other files.
 
 #### The `jerked_truck_events` table
 
-Primary keys: `date_timestamp`, `label`
+Primary keys: `date_timestamp`, `event_type`, `label`
 
 | Column | Type | Description |
 | ------ | ---- | ----------- |
 | `date_timestamp` | `TIMESTAMP NOT NULL` | The timestamp of the record |
 | `label` | `VARCHAR(50) NOT NULL` | The label string the categorizes the values series |
+| `event_type` | `VARCHAR(255) NOT NULL` | The event type (this one comes from the file name convention) |
 | `accel_x` | `DECIMAL(40, 20)` | The accelerometer X-axis value |
 | `accel_y` | `DECIMAL(40, 20)` | The accelerometer Y-axis value |
 | `accel_z` | `DECIMAL(40, 20)` | The accelerometer Z-axis value |
