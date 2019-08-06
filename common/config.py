@@ -20,6 +20,9 @@ def parse_config():
             },
             'spark': {
                 'app_name': config.get('SPARK', 'APP_NAME')
+            },
+            'data': {
+                'raw_path': config.get('DATA', 'RAW_PATH')
             }
         }
 

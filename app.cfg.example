@@ -7,3 +7,6 @@ DB_PORT=5432
 
 [SPARK]
 APP_NAME=Truck Data Wrangler
+
+[DATA]
+RAW_PATH=raw_data/
