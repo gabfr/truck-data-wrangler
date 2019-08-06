@@ -86,8 +86,6 @@ Primary keys: `date_timestamp`, `label`
 
 ## The technology stack
 
-We could do the same with other infinity of tools. So, below I will describe why we choosed these techs:
-
  - TimescaleDB (PostgreSQL fine tuned for "real-time" applications with high-frequency INSERT statements)
  - Apache Spark (with Structured Streaming)
 
