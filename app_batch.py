@@ -9,10 +9,12 @@ def main():
     spark = create_spark_session()
     
     truck_events_df = unify_separate_event_files(spark, configs['data']['raw_path'])
+    truck_events_df.createOrReplaceTempView("truck_events")
 
     spark.sql(average_acceleration_query).show(truncate=False)
     
-    jerked_truck_events_df = calculate_jerk_from_truck_events(spark)
+    jerked_truck_events_df = calculate_jerk_from_truck_events(truck_events_df)
+    jerked_truck_events_df.createOrReplaceTempView("jerked_truck_events")
     
     spark.sql(max_jerk_x_query).show(truncate=False)
     spark.sql(max_jerk_y_query).show(truncate=False)

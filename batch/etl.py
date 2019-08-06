@@ -39,13 +39,10 @@ def unify_separate_event_files(spark, raw_data_path = 'raw_data/'):
     for df in spark_dfs_iterator:
         unified_spark_df = unified_spark_df.unionAll(df)
 
-    unified_spark_df.createOrReplaceTempView("truck_events")
     return unified_spark_df
 
 
-def calculate_jerk_from_truck_events(spark):
-    df = spark.table("truck_events")
-
+def calculate_jerk_from_truck_events(df):
     column_list = ["event_type", "label"]
     win_spec = Window.partitionBy([col(x) for x in column_list]).orderBy("timestamp")
 
@@ -81,5 +78,4 @@ def calculate_jerk_from_truck_events(spark):
          .otherwise((col("accel_z") - col("last_accel_z")) / (col("timestamp") - col("last_timestamp")))
     )
 
-    df.createOrReplaceTempView("jerked_truck_events")
     return df
