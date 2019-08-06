@@ -1,4 +1,5 @@
 from common.schemas import csvSchema
+from common.udfs import get_underscore_prefix
 from pyspark.sql.window import Window
 from pyspark.sql.functions import col
 from pyspark.sql.functions import lit
@@ -20,9 +21,13 @@ def create_streaming_window(raw_df, configs):
         "date_timestamp",
         F.to_timestamp(F.from_unixtime(((col("timestamp") / 1000) / 1000), 'yyyy-MM-dd HH:mm:ss.SSS'))
     )
+
+    raw_df = raw_df.withColumn("original_file_name", F.input_file_name())
+
+    raw_df = raw_df.withColumn("event_type", get_underscore_prefix("original_file_name"))
     
     windowedStreaming = (
-        raw_df.groupBy(col("date_timestamp"), col("label"), F.window(col("date_timestamp"), "1 second"))
+        raw_df.groupBy(col("date_timestamp"), col("event_type"), col("label"), F.window(col("date_timestamp"), "1 second"))
             .agg(
                 F.mean('accel_x'),
                 F.mean('accel_y'),

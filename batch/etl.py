@@ -1,4 +1,5 @@
 from common.connections import create_spark_session
+from common.udfs import _get_underscore_prefix
 from pyspark.sql.functions import lit, col
 from pyspark.sql.window import Window
 from pyspark.sql import functions as F
@@ -11,7 +12,7 @@ def unify_separate_event_files(spark, raw_data_path = 'raw_data/'):
     for r, d, f in os.walk(raw_data_path):
         for file in f:
             if '.csv' in file:
-                event_type = "_".join(file.split("_")[:-1])
+                event_type = _get_underscore_prefix(file)
                 file_path = os.path.join(raw_data_path, file)
                 data_files[file_path] = event_type
 
