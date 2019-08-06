@@ -1,5 +1,6 @@
 
 drop_jerked_truck_events_table = "DROP TABLE IF EXISTS jerked_truck_events"
+
 create_jerked_truck_events_table = """
     CREATE TABLE IF NOT EXISTS jerked_truck_events (
         date_timestamp TIMESTAMP NOT NULL,

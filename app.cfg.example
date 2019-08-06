@@ -4,3 +4,6 @@ DB_NAME=truckdata
 DB_USER=postgres
 DB_PASSWORD=postgres
 DB_PORT=5432
+
+[SPARK]
+APP_NAME=Truck Data Wrangler
