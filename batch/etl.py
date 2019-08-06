@@ -82,3 +82,4 @@ def calculate_jerk_from_truck_events(spark):
     )
 
     df.createOrReplaceTempView("jerked_truck_events")
+    return df
