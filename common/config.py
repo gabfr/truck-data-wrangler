@@ -23,6 +23,10 @@ def parse_config():
             },
             'data': {
                 'raw_path': config.get('DATA', 'RAW_PATH')
+            },
+            'streaming': {
+                'processing_time': config.get('STREAMING', 'PROCESSING_TIME'),
+                'checkpoint_location': config.get('STREAMING', 'CHECKPOINT_LOCATION')
             }
         }
 
