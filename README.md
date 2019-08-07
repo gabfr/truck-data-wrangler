@@ -25,11 +25,20 @@ Again, if using Docker this command shall be runned on the Spark container.
 
 Finally we're good to go. **We have two main entry points for this project:**
 
+### `python app_batch.py`
+
  - `python app_batch.py` will process all the _raw_data_ and give us:
     - The mean acceleration per event type and label
     - The maximum jerk timestamp on human readable date time stamp
+    
+![`python app_batch.py`](https://raw.githubusercontent.com/gabfr/truck-data-wrangler/master/images/Screen_Shot_2019-08-06_at_20.56.45.png)
+
+### `python app_stream.py`
+
  - `python app_stream.py` will watch the folder _raw_data_ or an S3 bucket folder or even an HDFS folder, every 10 seconds _(or less or more - configurable)_ will search for new files, stream it to Spark and do an upsert to our TimescaleDB:
     - More specifically on a table called `jerked_truck_events`. In that table we also have 4 new binary flags: `is_accelerating`, `is_breaking`, `is_turning_left`, `is_turning_right`
+
+![`python recreate_tables.py && rm -fr .spark-stream-checkpoint && python app_stream.py`](https://raw.githubusercontent.com/gabfr/truck-data-wrangler/master/images/Screen_Shot_2019-08-06_at_21.03.45.png)
 
 ## Schemas and conventions
 
