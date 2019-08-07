@@ -14,3 +14,4 @@ RAW_PATH=raw_data/
 [STREAMING]
 PROCESSING_TIME=10 seconds
 CHECKPOINT_LOCATION=.spark-stream-checkpoint/
+MAX_FILES_PER_TRIGGER=1
