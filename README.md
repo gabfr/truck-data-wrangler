@@ -8,6 +8,7 @@ This repository aims to resolve the code challenge proposed by the DTB Tech/Data
  - [Schemas and conventions](#schemas-and-conventions)
  - [The technology stack](#the-technology-stack)
  - [The data classification](#the-data-classification)
+ - [Final considerations](#final-considerations)
 
 ## Getting started
 
@@ -117,3 +118,9 @@ To classify if the truck was accelerating and breaking we simply check if the Je
 And lastly, but not leastly, to check if the truck was turning right or left we assumed the Yaw angle was accounted from left to right.
 With that in mind, to classify a turn we check if the gyroscope yaw value was outside the standard deviation mod window. Example: if the std.d. was 0.2, then if the yaw value is between -0.2 to 0.2 we assume the truck is steady and straight forward. But if it was below -0.2, then we assume the truck was turning left. And finally if it was higher than 0.2, then we assume the truck was  turning right.
 
+## Final considerations
+
+This project's simplistic algorithm to classify the flags may cause some trouble to later reuse it. 
+On the other hand, using something like S3 and a database that uses PostgreSQL Connector makes this application a breeze to integrate it in a larger system nor scale it to a larger dataset.
+
+_**Suggestion:** Plug Grafana dashboard into the TimescaleDB to create a fancy real-time updated dashboard of trucks events._
