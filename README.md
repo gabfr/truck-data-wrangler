@@ -13,7 +13,8 @@ This repository aims to resolve the code challenge proposed by the DTB Tech/Data
 ## Getting started
 
 First of all, you will need to create your configuration file by copying the `app.cfg.example` as `app.cfg` 
-(a normal `cp app.cfg.example app.cfg` would do it)
+(a normal `cp app.cfg.example app.cfg` would do it). 
+_In case of production don't forget to change the `MAX_FILES_PER_TRIGGER` setting, otherwise the stream will seem slower than it is._
 
 Fill all the values with your preferred configurations. Special attention to the TimescaleDB section, if you are running
 this project with Docker, then it will connect from the Spark container to the TimescaleDB container. 
