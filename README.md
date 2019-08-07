@@ -42,6 +42,20 @@ Finally we're good to go. **We have two main entry points for this project:**
 
 ![`python recreate_tables.py && rm -fr .spark-stream-checkpoint && python app_stream.py`](https://raw.githubusercontent.com/gabfr/truck-data-wrangler/master/images/Screen_Shot_2019-08-06_at_21.03.45.png)
 
+### Testing
+
+We have tests for the three modules, to run just do as follows:
+
+ - `python tests/test_common.py`
+ - `python tests/test_batch.py`
+ - `python tests/test_stream.py`
+ 
+**Important notes about the tests:**
+ - All sql queries inside `common/sql_queries.py` are syntax checked by the `test_common` suite;
+ - Both batch and stream ETL pipelines are tested against a downsized dataset located inside `tests/raw_data_test` folder
+ - When testing the stream, the test suite will try to connect to your TimescaleDB and create a database exclusively for testing (the name will be your configured database name with a `_test` suffix)
+     - If the TimescaleDB connection user don't have grants to create a new database, this test suite will fail.
+
 ## Schemas and conventions
 
 Before diving into some why & how of this project, we need to set our file name conventions, CSV schema and of course the Database schema too.
