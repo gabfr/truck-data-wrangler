@@ -3,8 +3,9 @@ from common.config import parse_config
 from pyspark.sql import SparkSession
 
 
-def create_timescaledb_connection(autocommit=True):
-    configs = parse_config()
+def create_timescaledb_connection(configs=None, autocommit=True):
+    if configs is None:
+        configs = parse_config()
 
     # connect to recreate the database
     conn = psycopg2.connect("host={} dbname={} port={} user={} password={}".format(
