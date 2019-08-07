@@ -20,6 +20,8 @@ def main():
     spark.sql(max_jerk_y_query).show(truncate=False)
     spark.sql(max_jerk_z_query).show(truncate=False)
 
+    spark.close()
+
 
 if __name__ == "__main__":
     main()
