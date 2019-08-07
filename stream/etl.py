@@ -7,12 +7,12 @@ from pyspark.sql import functions as F
 from stream.modifiers import classify_accelerometer_data
 
 
-def start_watch_for_csvs(spark, input_path):
+def start_watch_for_csvs(spark, configs):
     return (
         spark.readStream
              .schema(csvSchema)
-             .option("maxFilesPerTrigger", 1)
-             .csv(input_path, header=True)
+             .option("maxFilesPerTrigger", configs['streaming']['max_files_per_trigger'])
+             .csv(configs['data']['raw_path'], header=True)
     )
 
 

@@ -7,7 +7,7 @@ def main():
     configs = parse_config()
     spark = create_spark_session()
 
-    read_stream = start_watch_for_csvs(spark, configs['data']['raw_path'])
+    read_stream = start_watch_for_csvs(spark, configs)
 
     write_stream = create_streaming_window(read_stream, configs)
 
